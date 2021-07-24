@@ -1,1 +1,18 @@
-xyz
+- name: PLAY1
+  hosts: web ## this is the group name in inventory file
+  task:
+   - file: ## it is a file module and it can create file / directory / link
+       path: /tmp/new
+	   state: directory
+   - copy:
+       src: /tmp/today.txt ## source is alwasy the controller machine by default
+	   dest: /tmp ## this is the path on your remote server
+- name: PLAY2
+  hosts: app ## this is the group name in inventory file
+  task:
+	- file: ## it can create file / directory / link
+	    path: /tmp/new1
+		state: directory
+	- copy:
+	       scr: /tmp/today1.txt ## source is alwasy the controller machine by default
+	       dest: /tmp ## this is the path on your remote server
